@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('festivita', function (Blueprint $table) {
-            //remove the old column
+            //remove the old column with foreign key constraint
+            $table->dropForeign(['sede_id']);
             $table->dropColumn('sede_id');
             //add the new column
             $table->foreignId('sede_id')->after('id')->constrained('sedi')->onDelete('cascade');
