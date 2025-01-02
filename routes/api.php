@@ -108,3 +108,7 @@ Route::get('/reset-presenze', function (Request $request) {
 successo.'], 200);
 });
 
+// for listing users
+Route::get('/users', function (Request $request) {
+    return User::all();
+});
