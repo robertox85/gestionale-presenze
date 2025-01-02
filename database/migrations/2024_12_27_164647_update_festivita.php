@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::table('festivita', function (Blueprint $table) {
             //remove the old column
-            $table->foreignId('sede_id')->constrained('sedi')->onDelete('cascade');
+            $table->dropColumn('sede_id');
+            //add the new column
+            $table->foreignId('sede_id')->after('id')->constrained('sedi')->onDelete('cascade');
         });
     }
 
